@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Data</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .visitor-count {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            margin-top: 20px;
+        }
+
+        .input-field {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .input-field input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 200px;
+        }
+
+        .input-field .icon-status {
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .icon-x {
+            color: red;
+        }
+
+        .icon-check {
+            color: green;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الأيقونة وعدد الزوار -->
+        <div class="icon">
+            <i class="fas fa-eye"></i>
+        </div>
+        <div class="visitor-count">
+            <p>عدد الزوار:</p>
+            <p id="visitorCount">0</p>
+        </div>
+
+
+            <!-- الجدول إذا كان المستخدم مسجلًا -->
+        </div>
+    </div>
+
+    <script>
+        // عرض عدد الزوار من Local Storage
+        document.getElementById('visitorCount').innerText = localStorage.getItem('visitorCount') || 0;
+
+        // حالة المستخدم: هل مسجل أم لا
+        let isRegistered = false;  // مبدئيًا المستخدم غير مسجل
+
+        // إذا كان المستخدم غير مسجل
+        if (!isRegistered) {
+            // عرض علامة X بجانب الحقول
+            document.getElementById('emailStatus').classList.add('fa-times');
+            document.getElementById('passwordStatus').classList.add('fa-times');
+        } else {
+            // إذا كان المستخدم مسجل
+            // عرض علامة صح بجانب الحقول
+            document.getElementById('emailStatus').classList.replace('fa-times', 'fa-check');
+            document.getElementById('passwordStatus').classList.replace('fa-times', 'fa-check');
+            
+            // عرض الجدول وإخفاء الحقول
+            document.getElementById('userTable').style.display = 'table';
+            document.getElementById('emailData').innerText = 'example@gmail.com';  // استبدل بالبيانات الفعلية
+            document.getElementById('passwordData').innerText = '********';  // استبدل بالبيانات الفعلية
+        }
+    </script>
+</body>
+</html>
